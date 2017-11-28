@@ -1,0 +1,1221 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="ctl00_Head1"><link rel="shortcut icon" href="../../images/favlogo.ico" /><title>
+	Sample Testing Of Laboratory 
+</title><link id="ctl00_ThemeSheet" rel="stylesheet" type="text/css" href="../../CSS/basic_gold.css" /><link id="ctl00_lnkStyleSheet" rel="stylesheet" type="text/css" href="../../CSS/page-styleYellow.css" /><link id="ctl00_lnkStyleSheetCon" rel="stylesheet" type="text/css" /><link id="ctl00_lnkStyleSheetgrid" rel="stylesheet" type="text/css" />
+    
+    <script src="/IMISReports/JS/JS.js" type="text/javascript"></script>
+    
+ 
+    <script src="/IMISReports/JS/Popup/jquery-1.2.3.js" type="text/javascript"></script>
+    <script src="/IMISReports/JS/Popup/modal-window.js" type="text/javascript"></script>
+    <style>
+        .modal-overlay
+        {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            background: #000;
+            opacity: .75;
+            filter: alpha(opacity=75);
+            -moz-opacity: 0.75;
+            z-index: 101;
+        }
+
+        .modal-window
+        {
+            position: fixed;
+            top: 52%;
+            left: 50%;
+            margin: 0;
+            padding: 0;
+            z-index: 102;
+            
+            
+            
+       
+        }
+
+        .close-window
+        {
+            position: absolute;
+            width: 100%;
+            height: 32px;
+            right: 8px;
+            top: 8px;
+            background: transparent url('../../Images/close-button.png') no-repeat scroll right top;
+            text-indent: -99999px;
+            overflow: hidden;
+            cursor: pointer;
+            opacity: .5;
+            filter: alpha(opacity=50);
+            -moz-opacity: 0.5;
+        }
+
+            .close-window:hover
+            {
+                opacity: .99;
+                filter: alpha(opacity=99);
+                -moz-opacity: 0.99;
+            }
+            
+            
+     .em {
+	        font-size:1em;
+	        margin-bottom:20px;
+	        padding:20px;
+        }
+               
+    </style>
+    <script type="text/javascript" language="javascript" src="JS/jquery-1.2.2.pack.js"></script>
+    
+
+    <script type="text/javascript" language="javascript">
+        $(document).ready(function() {
+
+            // Reset Font Size
+            //var originalFontSize = $('html').css('font-size');
+            //alert(window.name);
+            var fonsize1 = '';
+            var originalFontSize = window.name; //'' + newFontSize + 'px';
+            $('html').css('font-size', originalFontSize);
+
+            $(".resetFont").click(function() {
+                window.name = originalFontSize + "px";
+                //                '';
+                $('html').css('font-size', originalFontSize);
+            });
+            // Increase Font Size
+            $(".increaseFont").click(function() {
+                var currentFontSize = $('html').css('font-size');
+                if (parseFloat(currentFontSize, 10) > 18)
+                { return false; }
+                var currentFontSizeNum = parseFloat(currentFontSize, 10);
+                var newFontSize = currentFontSizeNum * 1.2;
+                window.name = newFontSize + "px";
+                //                '';
+                $('html').css('font-size', newFontSize);
+                return false;
+            });
+            // Decrease Font Size
+            $(".decreaseFont").click(function() {
+                var currentFontSize = $('html').css('font-size');
+                if (parseFloat(currentFontSize, 10) < 14)
+                { return false; }
+                var currentFontSizeNum = parseFloat(currentFontSize, 10);
+                var newFontSize = currentFontSizeNum * 0.8;
+                window.name = newFontSize + "px";
+                //                '';
+                $('html').css('font-size', newFontSize);
+
+            });
+            $(".BlackFont").click(function() {
+                $('body').css('background-color', '#000000');
+                $('table').css('background-color', '#000000');
+                $('body').css('color', '#FBF202');
+                $('table').css('color', '#FBF202');
+
+                return false;
+            });
+        });
+    </script>
+    
+    <script type="text/javascript">
+        PagePath='/IMISReports/';
+        Language ='en-US';
+        ReportGenerationDateTime='20/11/2017 11:58:54';
+        LastUpdatedOn = '19/11/2017';
+        function f() 
+        {
+            divFilter.style.display = 'block';
+            divFilter.style.left =300;// tempX;
+            divFilter.style.top =150;// tempY+10;
+		    
+		    divFilter.style.border='solid';
+		    divFilter.style.borderWidth=2;
+		    divFilter.style.borderColor="#66cccc";
+		    divFilter.style.backgroundColor="#ebfafa";
+		    divFilter.style.background="#ebfafa";
+		    divFilter.style.position='absolute';
+		    
+		    
+		    var tb='<table id="filtbl" class="ReportTable">';
+		    try{
+                if(document.getElementsByTagName)
+                {  
+	                var table = document.getElementById('tableReportTable');  
+	                var rows = table.getElementsByTagName("tr"); 
+	                for(i = 1; i < rows.length; i++)
+	                { 
+	                    var cols = rows[i].getElementsByTagName("td");  
+	                    
+	                    
+	                    if(rows[i].style.display == 'none')
+	                    {
+	                        if(cols.length>=1)   
+		                        tb=tb+'<tr><td>'+cols[1].innerHTML +'</td><td><input name='+ i +' type=checkbox></td>'
+		                }
+	                    else 
+	                    {
+	                        if(cols.length>=1)   
+		                        tb=tb+'<tr><td>'+cols[1].innerHTML +'</td><td><input name='+ i +' type=checkbox  checked=true></td>'
+                        }
+		                
+		                
+		                    
+		                if(i<rows.length)
+		                {
+		                    i++;
+		                    cols = rows[i].getElementsByTagName("td"); 
+		                    
+		                    if(rows[i].style.display == 'none')
+	                        {
+	                            if(cols.length>=1)   
+		                            tb=tb+'<td>'+cols[1].innerHTML +'</td><td><input name='+ i +' type=checkbox></td>'
+		                    }
+	                        else 
+	                        {
+	                            if(cols.length>=1)   
+		                            tb=tb+'<td>'+cols[1].innerHTML +'</td><td><input name='+ i +' type=checkbox  checked=true></td>'
+                            }
+		                }
+		                if(i<rows.length)
+		                {
+		                    i++;
+		                    cols = rows[i].getElementsByTagName("td"); 
+		                    
+		                    if(rows[i].style.display == 'none')
+	                        {
+	                            if(cols.length>=1)   
+		                            tb=tb+'<td>'+cols[1].innerHTML +'</td><td><input name='+ i +' type=checkbox></td></tr>'
+		                    }
+	                        else 
+	                        {
+	                            if(cols.length>=1)   
+		                            tb=tb+'<td>'+cols[1].innerHTML +'</td><td><input name='+ i +' type=checkbox  checked=true></td></tr>'
+                            }
+		                }
+	                }
+	            }
+	        }catch(err){}
+	        
+	        
+	        tb=tb+'<tr><td colspan=6 align=center><input type="button" value="Filter" onclick="filterRows()"><td></tr></table>';
+	        
+	        document.getElementById("divFilter").innerHTML=tb; 
+
+        }
+        
+        
+        function filterRows()
+        {
+            divFilter.style.display = 'none';
+            
+            var table = document.getElementById('tableReportTable');  
+            var rows = table.getElementsByTagName("tr"); 
+            
+            var inputs = document.getElementsByTagName("input"); //or document.forms[0].elements;   
+            var cbs = []; //will contain all checkboxes   
+            var checked = []; //will contain all checked checkboxes   
+            for (var i = 0; i < inputs.length; i++) 
+            {   
+              if (inputs[i].type == "checkbox") 
+              {   
+                if(inputs[i].checked==false)
+                    rows[inputs[i].name].style.display = 'none';
+                else
+                    rows[inputs[i].name].style.display = 'block';
+              }   
+            }  
+            var j=0;
+            
+
+            var tot=new Array();
+            tot[0]=0;
+            tot[1]=0;
+            tot[2]=0;
+            tot[3]=0;
+            tot[4]=0;
+            tot[5]=0;
+            tot[6]=0;
+            tot[7]=0;
+            tot[8]=0;
+            tot[9]=0;
+            tot[10]=0;
+            tot[11]=0;
+            tot[12]=0;
+            tot[13]=0;
+            tot[14]=0;
+            tot[15]=0;
+            tot[16]=0;
+            tot[17]=0;
+            tot[18]=0;
+            tot[19]=0;
+            tot[20]=0;
+            tot[21]=0;
+            tot[22]=0;
+            tot[23]=0;
+            tot[24]=0;
+            tot[25]=0;
+            tot[26]=0;
+            tot[27]=0;
+            tot[28]=0;
+            tot[29]=0;
+            tot[30]=0;
+            tot[31]=0;
+            tot[32]=0;
+            tot[33]=0;
+            tot[34]=0;
+            tot[35]=0;
+            tot[36]=0;
+            tot[37]=0;
+            tot[38]=0;
+            tot[39]=0;
+            tot[40]=0;
+            
+            
+            for(var i = 1; i < rows.length; i++)
+	        { 
+	        
+	            if(rows[i].style.display == 'block')
+	            {
+	                j++;
+	                
+	                
+	                var cols = rows[i].getElementsByTagName("td"); 
+	                if(cols.length>=1)
+	                    cols[0].innerHTML=j;
+	                    
+	                    
+	                for(var c = 1; c < cols.length; c++)
+                    {
+                        
+                        if (cols[c].childNodes.length > 1) 
+                        {
+                            
+                            var child = cols[c].firstChild;
+                            tot[c]=tot[c]+parseFloat(child.innerHTML);
+                            
+                        }
+                        else
+                        {
+                            tot[c]=tot[c]+parseFloat(cols[c].innerHTML);
+                            
+                        }
+                    }    
+	            }
+	            
+	        } 
+	        
+	        var colstotal = rows[rows.length-1].getElementsByTagName("th");     
+
+	        for(var t = 1; t < colstotal.length; t++)
+            {
+                var spans = colstotal[t].getElementsByTagName("span"); 
+                
+                try
+                {
+                    if(parseFloat(spans[0].innerHTML).toString().toLowerCase!="nan")
+                    {
+                    
+                        spans[0].innerHTML=Math.round(tot[t+1]*100)/100;
+                    }
+                }
+                catch(err){}
+            }
+	        
+        }
+        
+        //-->
+            
+            // Copyright 2006-2007 javascript-array.com
+        function makeItMove(containerId, userActionId, textItemId, i) {
+            // Values used by the script.
+            // BEWARE : YOU WILL HAVE TO MODIFIE THESE VALUES IN THE HTML CODE AS WELL, SETTING THEM TO THEIR NUMERIC VALUES!
+            var startValue = 0; // The value the movement will start. Must be big enough to let some white space.
+            var endValue = 300; // the value the movement will end. Must be big enough to let the whoile text disappear
+            var stopValue = 320; // Must be greater than endValue;
+            //
+            var containerPositionFromTop = 201;
+            var containerPositionFromLeft = 35;
+            var containerWidth = 200;
+            var containerHeight = 134;
+            //
+            if (document.getElementById) {
+                if (!document.getElementById('userAction')) {
+                    //alert("No action");
+                }
+                else {
+                    document.getElementById(userActionId).style.visibility = "visible";
+                    document.getElementById(userActionId).style.display = "block";
+                    document.getElementById(userActionId).style.zIndex = "15";
+                    document.getElementById(userActionId).style.position = "relative";
+                    document.getElementById(userActionId).style.top = "-3px";
+                    document.getElementById(userActionId).style.left = "0px";
+                    document.getElementById(userActionId).style.width = "auto";
+                    document.getElementById(userActionId).style.height = "auto";
+                }
+
+                document.getElementById(containerId).style.zIndex = "11";
+                document.getElementById(containerId).style.position = "relative";
+                document.getElementById(containerId).style.height = containerHeight + "px";
+                document.getElementById(containerId).style.overflow = "hidden";
+                document.getElementById(textItemId).style.zIndex = "11";
+                document.getElementById(textItemId).style.position = "relative";
+                document.getElementById(textItemId).style.top = -i + "px";
+            }
+            if (i < endValue) {
+                i++;
+                timer = setTimeout("makeItMove('" + containerId + "','" + userActionId + "','" + textItemId + "'," + i + ")", 50);
+            }
+            else
+                if (i == endValue) {
+                i = startValue;
+                timer = setTimeout("makeItMove('" + containerId + "','" + userActionId + "','" + textItemId + "'," + i + ")", 100);
+            }
+            else {
+                clearTimeout(timer);
+                document.getElementById(textItemId).style.zIndex = "11";
+                document.getElementById(textItemId).style.position = "relative";
+                document.getElementById(textItemId).style.top = 10 + "px";
+                document.getElementById(textItemId).style.left = 0 + "px";
+                document.getElementById(containerId).style.overflow = "scroll";
+            }
+        }
+
+        //-->
+
+        // Copyright 2006-2007 javascript-array.com
+
+        var timeout = 500;
+        var closetimer = 0;
+        var ddmenuitem = 0;
+
+        // open hidden layer
+        function mopen(id) {
+            // cancel close timer
+            mcancelclosetime();
+
+            // close old layer
+            if (ddmenuitem) ddmenuitem.style.visibility = 'hidden';
+
+            // get new layer and show it
+            ddmenuitem = document.getElementById(id);
+            ddmenuitem.style.visibility = 'visible';
+
+        }
+        // close showed layer
+        function mclose() {
+            if (ddmenuitem) ddmenuitem.style.visibility = 'hidden';
+        }
+
+        // go close timer
+        function mclosetime() {
+            closetimer = window.setTimeout(mclose, timeout);
+        }
+
+        // cancel close timer
+        function mcancelclosetime() {
+            if (closetimer) {
+                window.clearTimeout(closetimer);
+                closetimer = null;
+            }
+        }
+
+        // close layer when click-out
+        document.onclick = mclose; 
+
+            
+                
+    </script>
+     <script type="text/javascript" language="javascript">
+         $(document).ready(function() {
+
+             $(".scroll").click(function(event) {
+                 $('html,body').animate({ scrollTop: 150 }, 500);
+             });
+         });
+</script>
+<script src="JS/jquery.min.js" type="text/javascript"></script>
+        <script src="/IMISReports/JS/jquery-1.4.3.min.js" type="text/javascript"></script>
+        <script src="/IMISReports/FusionCharts/FusionCharts.js" type="text/javascript"></script>
+
+    <script src="/IMISReports/FusionCharts/FusionCharts.HC.js" type="text/javascript"></script>
+
+    <script src="/IMISReports/FusionCharts/FusionChartsExportComponent.js" type="text/javascript"></script>
+    
+    
+    <link href="../../CSS/Styles.css" rel="stylesheet" type="text/css" />
+
+    <script src="../../JS/calendar.js" type="text/javascript"></script>
+
+    <script src="../../JS/datepicker.js" type="text/javascript"></script>
+
+    <style type="text/css">
+        .hiddencol
+        {
+            display: none;
+        }
+        .viscol
+        {
+            display: block;
+        }
+        .textBoxStyleNumbers
+        {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 11px;
+            font-weight: normal;
+            text-decoration: none;
+            letter-spacing: normal;
+            word-spacing: normal;
+            height: 14px;
+            width: 150px;
+            border-top-width: 1px;
+            border-right-width: 1px;
+            border-bottom-width: 1px;
+            border-left-width: 1px;
+            border-top-style: groove;
+            border-right-style: groove;
+            border-bottom-style: groove;
+            border-left-style: groove;
+            border-top-color: #666666;
+            border-right-color: #000000;
+            border-bottom-color: #CCCCCC;
+            border-left-color: #000000;
+            text-align: right;
+        }
+    </style>
+</head>
+<body bgcolor="#FBF8F1">
+    <form name="aspnetForm" method="post" action="rpt_WQM_WaterSampleTestingLabWise.aspx?Rep=0&amp;RP=Y" id="aspnetForm">
+<div>
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__LASTFOCUS" id="__LASTFOCUS" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJODUzMzY1Nzg3D2QWAmYPZBYEAgEPZBYEAgIPFgIeBGhyZWYFFH4vQ1NTL2Jhc2ljX2dvbGQuY3NzZAIDDxYCHwAFGn4vQ1NTL3BhZ2Utc3R5bGVZZWxsb3cuY3NzZAIDD2QWCgIDD2QWAmYPZBYCAgEPZBYCZg8WAh4HVmlzaWJsZWhkAgQPFgIfAWgWAmYPZBYCAgEPZBYCZg8WAh8BaGQCBQ9kFgJmD2QWBAIBDxBkZBYBZmQCAg9kFgICDQ8WAh4EVGV4dGVkAgYPDxYCHwJlZGQCCQ9kFgJmD2QWAgIBD2QWFAIBDxBkZBYBZmQCAw9kFgICAQ9kFgICAQ8QZBAVDQ0tU2VsZWN0IFllYXItCTIwMDYtMjAwNwkyMDA3LTIwMDgJMjAwOC0yMDA5CTIwMDktMjAxMAkyMDEwLTIwMTEJMjAxMS0yMDEyCTIwMTItMjAxMwkyMDEzLTIwMTQJMjAxNC0yMDE1CTIwMTUtMjAxNgkyMDE2LTIwMTcJMjAxNy0yMDE4FQ0CLTEJMjAwNi0yMDA3CTIwMDctMjAwOAkyMDA4LTIwMDkJMjAwOS0yMDEwCTIwMTAtMjAxMQkyMDExLTIwMTIJMjAxMi0yMDEzCTIwMTMtMjAxNAkyMDE0LTIwMTUJMjAxNS0yMDE2CTIwMTYtMjAxNwkyMDE3LTIwMTgUKwMNZ2dnZ2dnZ2dnZ2dnZxYBAgxkAgkPEGRkFgECA2QCDQ8QDxYGHg5EYXRhVmFsdWVGaWVsZAUHU3RhdGVpZB4NRGF0YVRleHRGaWVsZAUJU3RhdGVuYW1lHgtfIURhdGFCb3VuZGdkEBUgEC0tU2VsZWN0IFN0YXRlLS0VQU5EQU1BTsKgQU5EwqBOSUNPQkFSD0FOREhSQcKgUFJBREVTSBJBUlVOQUNIQUzCoFBSQURFU0gFQVNTQU0FQklIQVILQ0hBVFRJU0dBUkgDR09BB0dVSkFSQVQHSEFSWUFOQRFISU1BQ0hBTMKgUFJBREVTSBNKQU1NVcKgQU5EwqBLQVNITUlSCUpIQVJLSEFORAlLQVJOQVRBS0EGS0VSQUxBD01BREhZQcKgUFJBREVTSAtNQUhBUkFTSFRSQQdNQU5JUFVSCU1FR0hBTEFZQQdNSVpPUkFNCE5BR0FMQU5EBk9ESVNIQQpQVURVQ0hFUlJZBlBVTkpBQglSQUpBU1RIQU4GU0lLS0lNC1RBTUlMwqBOQURVCVRFTEFOR0FOQQdUUklQVVJBDlVUVEFSwqBQUkFERVNIC1VUVEFSQUtIQU5EDFdFU1TCoEJFTkdBTBUgAi0xAzAwMQMwMDIDMDAzAzAwNAMwMDUDMDMzAzAxMAMwMTEDMDEyAzAxMwMwMTQDMDM0AzAxNQMwMTYDMDE3AzAxOAMwMjADMDIxAzAyMgMwMjMDMDI0AzAyNQMwMjYDMDI3AzAyOAMwMjkDMDM2AzAzMAMwMzEDMDM1AzAzMhQrAyBnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZxYBAh1kAhEPEA8WBh8DBQpEaXN0cmljdGlkHwQFDERpc3RyaWN0TmFtZR8FZ2QQFUwMQWxsIERpc3RyaWN0BEFHUkEHQUxJR0FSSAlBTExBSEFCQUQOQU1CRURLQVIgTkFHQVIGQU1FVEhJB0FVUkFJWUEIQVpBTUdBUkgHQkFHSFBBVAhCQUhSQUlDSAZCQUxMSUEJQkFMUkFNUFVSBUJBTkRBCUJBUkFCQU5LSQhCQVJFSUxMWQVCQVNUSQZCSUpOT1IGQlVEQVVOC0JVTEFORFNIQUhSCUNIQU5EQVVMSQpDSElUUkFLT09UBkRFT1JJQQRFVEFIBkVUQVdBSAhGQUlaQUJBRAtGQVJSVUtIQUJBRAhGQVRFSFBVUglGSVJPWkFCQUQTR0FVVEFNIEJVRERIQSBOQUdBUglHSEFaSUFCQUQIR0hBWklQVVIFR09OREEJR09SQUtIUFVSCEhBTUlSUFVSBUhBUFVSBkhBUkRPSQZKQUxBVU4HSkFVTlBVUgZKSEFOU0kUSllPVElCQSBQSE9PTEUgTkFHQVIHS0FOTkFVSgxLQU5QVVIgREVIQVQMS0FOUFVSIE5BR0FSB0tBU0dBTkoJS0FVU0hBTUJJBUtIRVJJC0tVU0hJIE5BR0FSCExBTElUUFVSB0xVQ0tOT1cOTUFIQU1BWUEgTkFHQVILTUFIQVJBSkdBTkoGTUFIT0JBCE1BSU5QVVJJB01BVEhVUkEDTUFVBk1FRVJVVAhNSVJaQVBVUglNT1JBREFCQUQNTVVaQUZGQVJOQUdBUghQSUxJQkhJVApQUkFUQVBHQVJIClJBRSBCQVJFTEkGUkFNUFVSClNBSEFSQU5QVVIHU0FNQkhBTBFTQU5UIEtBQkVFUiBOQUdBUhJTQU5UIFJBVklEQVMgTkFHQVIMU0hBSEpBSEFOUFVSBlNIQU1MSQlTSFJBVkFTVEkPU0lEREhBUlRIIE5BR0FSB1NJVEFQVVIJU09OQkhBRFJBCVNVTFRBTlBVUgVVTk5BTwhWQVJBTkFTSRVMAi0xBDA0NzEEMDQ2OAQwNTAxBDA1MDQEMDY5MwQwNDg4BDA1MTcEMDQ2NAQwNTA2BDA1MTkEMDUwOAQwNDk2BDA1MDIEMDQ3NgQwNTExBDA0NTkEMDQ3NQQwNDY3BDA1MjIEMDQ5NwQwNTE2BDA0NzMEMDQ4NwQwNTAzBDA0ODUEMDQ5OAQwNDcyBDA0NjYEMDQ2NQQwNTIxBDA1MDkEMDUxNAQwNDk0BDA3MTcEMDQ4MQQwNDkxBDA1MjAEMDQ5MgQwNDYyBDA0ODYEMDQ4OQQwNDkwBDA2OTIEMDUwMAQwNDc5BDA1MTUEMDQ5MwQwNDgzBDA0NjkEMDUxMwQwNDk1BDA0NzQEMDQ3MAQwNTE4BDA0NjMEMDUyNQQwNDYwBDA0NTgEMDQ3NwQwNDk5BDA0ODQEMDQ2MQQwNDU3BDA3MTkEMDUxMgQwNTI0BDA0NzgEMDcxOAQwNTA3BDA1MTAEMDQ4MAQwNTI2BDA1MDUEMDQ4MgQwNTIzFCsDTGdnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2cWAWZkAhUPEA8WCB8DBQdCbG9ja2lkHwQFCUJsb2NrTmFtZR8FZx4HRW5hYmxlZGhkEBUBCUFsbCBCbG9jaxUBAi0xFCsDAWcWAWZkAhkPEGRkFgFmZAIdDxBkEBVNEi0tQWxsIExhYm9yYXRvcnktLUggIFJlZ2lvbmFsICB3YXRlciBUZXN0aW5nIExhYm9yYXRvcnkgR29yYWtocHVyIChHT1JBS0hQVVIgKSAtIFNUQVRJT05BUlkzRGlzdHJpY3QgTGFib3JhdG9yeSBMdWNrbm93IChMVUNLTk9XICkgLSBTVEFUSU9OQVJZO0Rpc3RyaWN0IFdhdGVyIFRlc3RpbmcgTGFib3JhdG9yeSAoTU9SQURBQkFEICkgLSBTVEFUSU9OQVJZPURpc3RyaWN0IFdhdGVyIFRlc3RpbmcgTGFib3JhdG9yeSBCYXN0aSAoQkFTVEkgKSAtIFNUQVRJT05BUlk7RUUgQ29uc3QgRGl2aSBKUCBOYWdhciAoSllPVElCQSBQSE9PTEUgTkFHQVIgKSAtIFNUQVRJT05BUlkzRmF0ZWhwdXIgV2F0ZXIgVGVzdGluZyBMYWIgKEZBVEVIUFVSICkgLSBTVEFUSU9OQVJZK0phbCBOaWdhbSBBemFtZ2FyaCAoQVpBTUdBUkggKSAtIFNUQVRJT05BUlk8UmVnaW9uYWwgV2F0ZXIgQW5hbHlzaXMgTGFib3JhdG9yeSBBZ3JhIChBR1JBICkgLSBTVEFUSU9OQVJZRFJlZ2lvbmFsIFdhdGVyIEFuYWx5c2lzIExhYm9yYXRvcnkgVmFyYW5hc2kgKFZBUkFOQVNJICkgLSBTVEFUSU9OQVJZJlRDRCBVUEpOIFJhbXB1ciAoUkFNUFVSICkgLSBTVEFUSU9OQVJZI1VQIEpBTCBOSUdBTSAoU0hBTUxJICkgLSBTVEFUSU9OQVJZRlVQIEphbCBOaWdhbSBEaXN0cmljdCBXYXRlciBUZXN0aW5nIExhYm9yYXRvcnkgKFNJVEFQVVIgKSAtIFNUQVRJT05BUllGVVBKYWwgTmlnYW0gV2F0ZXIgVGVzdGluZyBMYWIgQnVsYW5kc2hhaGFyIChCVUxBTkRTSEFIUiApIC0gU1RBVElPTkFSWTBXQVRFUiBUQVNUSU5HIExBQiBJTiBHQVJJIChCSUpOT1IgKSAtIFNUQVRJT05BUlkzV2F0ZXIgVGVzdGluZyBMYWIgQ2hhbmRhdXNpIChTQU1CSEFMICkgLSBTVEFUSU9OQVJZLVdhdGVyIFRlc3RpbmcgTGFiIEhBUFVSIChIQVBVUiApIC0gU1RBVElPTkFSWThXYXRlciBUZXN0aW5nIExhYm9yYXRvcnkgQWxpZ2FyaCAoQUxJR0FSSCApIC0gU1RBVElPTkFSWTxXYXRlciBUZXN0aW5nIExhYm9yYXRvcnkgQWxsYWhhYmFkIChBTExBSEFCQUQgKSAtIFNUQVRJT05BUllGV2F0ZXIgVGVzdGluZyBMYWJvcmF0b3J5IEFtYmVka2FyIE5hZ2FyIChBTUJFREtBUiBOQUdBUiApIC0gU1RBVElPTkFSWThXYXRlciBUZXN0aW5nIExhYm9yYXRvcnkgQXVyYWl5YSAoQVVSQUlZQSApIC0gU1RBVElPTkFSWTpXYXRlciBUZXN0aW5nIExhYm9yYXRvcnkgQXphbWdhcmggKEFaQU1HQVJIICkgLSBTVEFUSU9OQVJZOFdhdGVyIFRlc3RpbmcgTGFib3JhdG9yeSBCYWdocGF0IChCQUdIUEFUICkgLSBTVEFUSU9OQVJZOldhdGVyIFRlc3RpbmcgTGFib3JhdG9yeSBCYWhyYWljaCAoQkFIUkFJQ0ggKSAtIFNUQVRJT05BUlk2V2F0ZXIgVGVzdGluZyBMYWJvcmF0b3J5IEJhbGxpYSAoQkFMTElBICkgLSBTVEFUSU9OQVJZPFdhdGVyIFRlc3RpbmcgTGFib3JhdG9yeSBCYWxyYW1wdXIgKEJBTFJBTVBVUiApIC0gU1RBVElPTkFSWTRXYXRlciBUZXN0aW5nIExhYm9yYXRvcnkgQmFuZGEgKEJBTkRBICkgLSBTVEFUSU9OQVJZPFdhdGVyIFRlc3RpbmcgTGFib3JhdG9yeSBCYXJhYmFua2kgKEJBUkFCQU5LSSApIC0gU1RBVElPTkFSWTpXYXRlciBUZXN0aW5nIExhYm9yYXRvcnkgQmFyZWlsbHkgKEJBUkVJTExZICkgLSBTVEFUSU9OQVJZNndhdGVyIFRlc3RpbmcgTGFib3JhdG9yeSBCdWRhdW4gKEJVREFVTiApIC0gU1RBVElPTkFSWUN3YXRlciB0ZXN0aW5nIGxhYm9yYXRvcnkgY2QgdXAgam4gcGlsaWJoaXQgKFBJTElCSElUICkgLSBTVEFUSU9OQVJZPFdhdGVyIFRlc3RpbmcgTGFib3JhdG9yeSBDaGFuZGF1bGkgKENIQU5EQVVMSSApIC0gU1RBVElPTkFSWUlXYXRlciBUZXN0aW5nIExhYm9yYXRvcnkgQ2hhdHJhcGF0aSBTaGFodSBKaSBOYWdhciAoQU1FVEhJICkgLSBTVEFUSU9OQVJZPldhdGVyIFRlc3RpbmcgTGFib3JhdG9yeSBDaGl0cmFrb290IChDSElUUkFLT09UICkgLSBTVEFUSU9OQVJZNldhdGVyIFRlc3RpbmcgTGFib3JhdG9yeSBEZW9yaWEgKERFT1JJQSApIC0gU1RBVElPTkFSWTJXYXRlciBUZXN0aW5nIExhYm9yYXRvcnkgRXRhaCAoRVRBSCApIC0gU1RBVElPTkFSWTZXYXRlciBUZXN0aW5nIExhYm9yYXRvcnkgRXRhd2FoIChFVEFXQUggKSAtIFNUQVRJT05BUlk6V2F0ZXIgVGVzdGluZyBMYWJvcmF0b3J5IEZhaXphYmFkIChGQUlaQUJBRCApIC0gU1RBVElPTkFSWUBXYXRlciBUZXN0aW5nIExhYm9yYXRvcnkgRmFycnVraGFiYWQgKEZBUlJVS0hBQkFEICkgLSBTVEFUSU9OQVJZPFdhdGVyIFRlc3RpbmcgTGFib3JhdG9yeSBGaXJvemFiYWQgKEZJUk9aQUJBRCApIC0gU1RBVElPTkFSWVBXYXRlciBUZXN0aW5nIExhYm9yYXRvcnkgR2F1dGFtIEJ1ZGRoYSBOYWdhciAoR0FVVEFNIEJVRERIQSBOQUdBUiApIC0gU1RBVElPTkFSWTxXYXRlciBUZXN0aW5nIExhYm9yYXRvcnkgR2hhemlhYmFkIChHSEFaSUFCQUQgKSAtIFNUQVRJT05BUlk6V2F0ZXIgVGVzdGluZyBMYWJvcmF0b3J5IEdoYXppcHVyIChHSEFaSVBVUiApIC0gU1RBVElPTkFSWTRXYXRlciBUZXN0aW5nIExhYm9yYXRvcnkgR29uZGEgKEdPTkRBICkgLSBTVEFUSU9OQVJZOldhdGVyIFRlc3RpbmcgTGFib3JhdG9yeSBIYW1pcnB1ciAoSEFNSVJQVVIgKSAtIFNUQVRJT05BUlk2V2F0ZXIgVGVzdGluZyBMYWJvcmF0b3J5IEhhcmRvaSAoSEFSRE9JICkgLSBTVEFUSU9OQVJZNldhdGVyIFRlc3RpbmcgTGFib3JhdG9yeSBKYWxhdW4gKEpBTEFVTiApIC0gU1RBVElPTkFSWThXYXRlciBUZXN0aW5nIExhYm9yYXRvcnkgSmF1bnB1ciAoSkFVTlBVUiApIC0gU1RBVElPTkFSWTZXYXRlciBUZXN0aW5nIExhYm9yYXRvcnkgSmhhbnNpIChKSEFOU0kgKSAtIFNUQVRJT05BUlk4V2F0ZXIgVGVzdGluZyBMYWJvcmF0b3J5IEthbm5hdWogKEtBTk5BVUogKSAtIFNUQVRJT05BUllCV2F0ZXIgVGVzdGluZyBMYWJvcmF0b3J5IEthbnB1ciBEZWhhdCAoS0FOUFVSIERFSEFUICkgLSBTVEFUSU9OQVJZQldhdGVyIFRlc3RpbmcgTGFib3JhdG9yeSBLYW5wdXIgTmFnYXIgKEtBTlBVUiBOQUdBUiApIC0gU1RBVElPTkFSWUBXYXRlciBUZXN0aW5nIExhYm9yYXRvcnkgS2Fuc2hpcmFtIE5hZ2FyIChLQVNHQU5KICkgLSBTVEFUSU9OQVJZPFdhdGVyIFRlc3RpbmcgTGFib3JhdG9yeSBLYXVzaGFtYmkgKEtBVVNIQU1CSSApIC0gU1RBVElPTkFSWTRXYXRlciBUZXN0aW5nIExhYm9yYXRvcnkgS2hlcmkgKEtIRVJJICkgLSBTVEFUSU9OQVJZQFdhdGVyIFRlc3RpbmcgTGFib3JhdG9yeSBLdXNoaSBOYWdhciAoS1VTSEkgTkFHQVIgKSAtIFNUQVRJT05BUlk6V2F0ZXIgVGVzdGluZyBMYWJvcmF0b3J5IExhbGl0cHVyIChMQUxJVFBVUiApIC0gU1RBVElPTkFSWUZXYXRlciBUZXN0aW5nIExhYm9yYXRvcnkgTWFoYW1heWEgTmFnYXIgKE1BSEFNQVlBIE5BR0FSICkgLSBTVEFUSU9OQVJZQFdhdGVyIFRlc3RpbmcgTGFib3JhdG9yeSBNYWhhcmFqZ2FuaiAoTUFIQVJBSkdBTkogKSAtIFNUQVRJT05BUlk2V2F0ZXIgVGVzdGluZyBMYWJvcmF0b3J5IE1haG9iYSAoTUFIT0JBICkgLSBTVEFUSU9OQVJZOldhdGVyIFRlc3RpbmcgTGFib3JhdG9yeSBNYWlucHVyaSAoTUFJTlBVUkkgKSAtIFNUQVRJT05BUlk4V2F0ZXIgVGVzdGluZyBMYWJvcmF0b3J5IE1hdGh1cmEgKE1BVEhVUkEgKSAtIFNUQVRJT05BUlkwV2F0ZXIgVGVzdGluZyBMYWJvcmF0b3J5IE1hdSAoTUFVICkgLSBTVEFUSU9OQVJZNldhdGVyIFRlc3RpbmcgTGFib3JhdG9yeSBNZWVydXQgKE1FRVJVVCApIC0gU1RBVElPTkFSWTpXYXRlciBUZXN0aW5nIExhYm9yYXRvcnkgTWlyemFwdXIgKE1JUlpBUFVSICkgLSBTVEFUSU9OQVJZRFdhdGVyIFRlc3RpbmcgTGFib3JhdG9yeSBNdXphZmZhcm5hZ2FyIChNVVpBRkZBUk5BR0FSICkgLSBTVEFUSU9OQVJZPldhdGVyIFRlc3RpbmcgTGFib3JhdG9yeSBQcmF0YXBnYXJoIChQUkFUQVBHQVJIICkgLSBTVEFUSU9OQVJZP1dhdGVyIFRlc3RpbmcgTGFib3JhdG9yeSBSYWkgQmFyZWxpICAoUkFFIEJBUkVMSSApIC0gU1RBVElPTkFSWT5XYXRlciBUZXN0aW5nIExhYm9yYXRvcnkgU2FoYXJhbnB1ciAoU0FIQVJBTlBVUiApIC0gU1RBVElPTkFSWUxXYXRlciBUZXN0aW5nIExhYm9yYXRvcnkgU2FudCBLYWJlZXIgTmFnYXIgKFNBTlQgS0FCRUVSIE5BR0FSICkgLSBTVEFUSU9OQVJZTldhdGVyIFRlc3RpbmcgTGFib3JhdG9yeSBTYW50IFJhdmlkYXMgTmFnYXIgKFNBTlQgUkFWSURBUyBOQUdBUiApIC0gU1RBVElPTkFSWUJXYXRlciBUZXN0aW5nIExhYm9yYXRvcnkgU2hhaGphaGFucHVyIChTSEFISkFIQU5QVVIgKSAtIFNUQVRJT05BUlk8V2F0ZXIgVGVzdGluZyBMYWJvcmF0b3J5IFNocmF2YXN0aSAoU0hSQVZBU1RJICkgLSBTVEFUSU9OQVJZSFdhdGVyIFRlc3RpbmcgTGFib3JhdG9yeSBTaWRkaGFydGggTmFnYXIgKFNJRERIQVJUSCBOQUdBUiApIC0gU1RBVElPTkFSWTxXYXRlciBUZXN0aW5nIExhYm9yYXRvcnkgU29uYmhhZHJhIChTT05CSEFEUkEgKSAtIFNUQVRJT05BUlk8V2F0ZXIgVGVzdGluZyBMYWJvcmF0b3J5IFN1bHRhbnB1ciAoU1VMVEFOUFVSICkgLSBTVEFUSU9OQVJZNFdhdGVyIFRlc3RpbmcgTGFib3JhdG9yeSBVbm5hbyAoVU5OQU8gKSAtIFNUQVRJT05BUlkVTQElBjAwMTM1MgYwMDIxMzkGMDAwNzQzBjAwMTM0OQYwMDA3NDgGMDAxMzk0BjAwMzc3MwYwMDEzNjEGMDAwNzY2BjAwMDc0OQYwMDM3NzQGMDAwNzQ0BjAwMDc1MgYwMDA3NDIGMDAzMzQ0BjAwMzcyNwYwMDEzNTgGMDAxMzMzBjAwMTM0MgYwMDE1NDkGMDAxMzU2BjAwMDc1MQYwMDEzNDQGMDAxMzU1BjAwMTM0NQYwMDE1NTAGMDAxMzQwBjAwMTU0MwYwMDE1NDIGMDAxNTM0BjAwMDgxOQYwMDI5MzgGMDAxNTUxBjAwMTM1MwYwMDE1MzkGMDAxNTUyBjAwMTM0MQYwMDE1NTMGMDAxMzYyBjAwMDc2NwYwMDA3NDcGMDAxMzM2BjAwMTM0NwYwMDE1NTQGMDAxNTQ0BjAwMTU1NQYwMDEzMzcGMDAxNTY3BjAwMTU2OAYwMDE1NjkGMDAxNTcwBjAwMjkzNwYwMDEzMzQGMDAxNTQ1BjAwMTM1NAYwMDA2MTgGMDAxMzU5BjAwMTM1MQYwMDE1NzEGMDAxMzYzBjAwMTM2MAYwMDEzNTcGMDAwNzQ2BjAwMTMzOQYwMDA1MjIGMDAxMzM1BjAwMTU0NgYwMDA2NTUGMDAxMzUwBjAwMTMzOAYwMDE1NDcGMDAxMzQ2BjAwMTM0OAYwMDE1NDEGMDAxMzQzBjAwMTU0OBQrA01nZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2RkAh8PD2QWAh4Fc3R5bGUFDGhlaWdodDoxOHB4O2QCIQ8WAh8BaBYGAgEPDxYCHwIFLEZvcm1hdCBFMi0gU2FtcGxlIFRlc3RpbmcgRG9uZSBpbiBMYWJvcmF0b3J5ZGQCAw8PFgIfAgUaRmluYW5jaWFsIFllYXIgLSAyMDE3LTIwMThkZAIFD2QWAgIBDw8WAh8CBSFQbGVhc2UgU2VsZWN0IHRoZSByZXF1aXJlZCBmaWVsZHNkZBgBBR5fX0NvbnRyb2xzUmVxdWlyZVBvc3RCYWNrS2V5X18WBAUMY3RsMDAkSW1nQ29uBQxjdGwwMCRJbWdCcmkFEWN0bDAwJGNvbnZlcnRXb3JkBRJjdGwwMCRjb252ZXJ0RVhDRUz7bCSEx8tYt5gIOhrtl29ldkkrkQ==" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/IMISReports/WebResource.axd?d=dQrSH3Q5djfS1HoCQVGx2A-B3rRuXAVq0M7FQTDWUfI8nB2zvIUHDxf6HdzPPLiYgWlWGVmWCQyufu8DmgMJTtY9tSA1&amp;t=635084231457020723" type="text/javascript"></script>
+
+
+<script src="/IMISReports/ScriptResource.axd?d=35-WvS9VzP65ygZDvCiTmrj5vaZ3jIgtxQWR90qUC8AsJ5dEWGjM8IdmF60H1xuRitCQ2qXaXWBoOa54SdYgFjV85VY7--GuPFjuwWLXYfQwkvih5d7gVdRxow74xzcNOR0IFNOclVqBWNCpLfpB39ITMNk1&amp;t=33137d1a" type="text/javascript"></script>
+<script src="/IMISReports/ScriptResource.axd?d=xiwdcmZXfzlEAYiF0nVmJT1x6ZksSVYhZAOR56k0fk7pZ4W3__8ykcBwRwR1fnWKqknIWJYKWFZlhH_ndjemq5v4kpWJo90eWXxtyqaEOnxxUmsd6l2Zl6bjazpnPRoXeMnjf-cQhJasncy94c4Z9x3EF3LzSOs7KgyO_7fiXffBENd00&amp;t=33137d1a" type="text/javascript"></script>
+<script src="../../FusionCharts/updatepanelhook.fusioncharts.js" type="text/javascript"></script>
+<div>
+
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEW4wECyPm2qAwCgcfCkwkCgpbpqA0CjdiXhgMCjdiXhgMCkK6YyAsC0KLE4AYCpsaw1wMC5ru9rA4Cl9Lnxw4Cl9Ljxw4Cl9Lfxw4Ch72BqgICr/zItwYCrJOu2goCutX8wAYCs9Xo2gUCtNWEowUCu9XsmAsC4Zfr9g0C4pevtwsC45ez9woC/Jf3twgC/Zeb9wsC/pfftwkC/5fj9wgC+JenyAkC5OXvkQcC54qJ/AsC9IqJ/AsC9IqN/AsC9Iqx/AsC9Iq1/AsCqumIAgKphu7vDALv/qPNBQLK6cHmDwLRgO77CQK8uoyNBAKb1aqmDgLRgNL7CQKAx4G4CwLv/q/NBQLK6c3mDwLRgOr7CQK8uoiNBAK8uvCMBAKb1ZamDgLmzLS7CALN59LMAgL4jZKSCgKAx424CwLv/qvNBQLK6cnmDwLRgNb7CQK8uvSMBAKb1ZKmDgLmzLC7CALN597MAgL4jZ6SCgLHpLynBALmzLy7CAKAx4m4CwLv/pfNBQKb1Z6mDgLK6bXmDwLXseGwBQLU3ofdCQKwv5vwCwKblPHQBwL9n8ScAgL9n4iqCAK6/MnRCwKF1Y+GAQKSpqquCAKblMGqDwL9n6DUDgKSpoKqAgL9n7hQArr8lf8BAv2f8OELArC/98kHApKmovEEAuaNv98KArC/y+QOApuUhbgFArexrMsHArr8gcQOApKmvkkCsL+zuggChdWj7wQC/Z+cRQKF1YulBgK6/O38CwKwv4dVApuUmdMNApuU7Y8EArexgOYOAv2fpLUIApKm5oACArr8/bYDApKmoq4IAoXV27IDArr8uacFArexlIEBArr8pYwCApuUqeAOAoXVt4oPAoXVu+sOArr8jcINArr83YwCAv2f2LcFArC/+6oBApKmkuQLArr80dELAoXV8/wBApuUnbQPApKm+rsFArr86ZsIArC/358BArC/76wCApKmlsUKApuU1cUHArex8NoNApuUkbYIAuaNk/oNArC/464PArr8mUAChdWfwA4Cm5S9mwEC5o2nQwKSprqqAgKSps7WDQK3scT1BAKwv8/FCQKSpo7FCgL9n8y5BgKSprasDwKF1a/tCwK3sZy+BQL9n7SPAQKF1ceXCAK3sdiQDwLL7uyfDQLIgYryAQLKyfD7CwKxp9qVBwKnpqqUBwLPi7juDALVmb2tAgKoitbnBQKJkeSsCALC5M9hAqmKuucFAsLkq2ECrIqu5wUCkLimoQICp4ra5wUCwOTTYQLC5NdhApC4sqECAsLk22ECxeTDYQLC5MNhApO44o0BAu24tqECAqiKvucFAqKK0ucFAqmK1ucFAqmKkq0HAqiKpucFAsXk92ECqYqu5wUCqIqq5wUCqYqq5wUCqIq2rQcCqYre5wUCqYqKrQcCqYqOrQcCooqGrQcCweT7ug4CiZGYigICqIqyrQcCqIrS5wUCooqSrQcCqIqOrQcCqYra5wUCqIqKrQcCp4rW5wUCwOTfYQLC5N9hAqKKpucFAqmKoucFAqiKhq0HAqmKhq0HAqiKgq0HAqKKoucFAqeKmq0HAqeKlq0HAqeKkq0HAqaKtq0HAomRjIoCAqKKrucFAqmKgq0HAqiKrucFAsHkx74IAqiKuucFAqiK2ucFAqaKsq0HAqeK0ucFAqeK3ucFAqiKoucFAsLk02ECooq65wUC3OTrmwECooqq5wUCqYqerQcCxeTzvggCqIre5wUCooq+5wUCqYqarQcCqYqm5wUCqYq+5wUCqYqyrQcCqYrS5wUCqYqWrQcC/7bR/gqfroKOIj9v7lMqaX8W3PbxDHZxHw==" />
+</div>
+        
+        <center>
+        <table style="width:98%;">
+            <tr>
+                        <td style="background-color:#EEEEEE; height:25px; text-align:right; vertical-align:top;" colspan="100">
+                            <div id="changeFont" style="height:13px;">
+                               
+                               <a id="skp" href="#bottom" class="scroll" style=" right:25px; color:Black; font-size: small;"><span id="ctl00_lblskp">Skip to main content</span></a>
+                                 &nbsp;
+                                <img src="/IMISReports/Images/font_increase.gif" style="width:16px; height:13px; right:50px;" class="increaseFont" />
+                                
+                                <img src="/IMISReports/Images/font_normal.gif" style="width:16px; height:13px; right:80px;" class="resetFont" />
+                                
+                                <img src="/IMISReports/Images/font_decrease.gif" style="width:16px; height:13px; right:110px;" class="decreaseFont" />
+                                
+                                <input type="image" name="ctl00$ImgCon" id="ctl00_ImgCon" src="../../Images/font_high.gif" style="height:13px;width:16px;border-width:0px;right:140px;" />
+                                <input type="image" name="ctl00$ImgBri" id="ctl00_ImgBri" src="../../Images/font_standard.gif" style="height:13px;width:16px;border-width:0px;right:170px;" />
+                                
+                            </div>
+                        </td>
+                    </tr>
+        </table></center>
+        <table style="height : 100%;border-collapse : collapse" width="100%" cellpadding="0" cellspacing="0">
+            
+            <tr>
+                <td valign="top" style="height : 80;">
+                <table width="100%" style="border-collapse : collapse" cellpadding="0" cellspacing="0" border="0">
+                   <tr>
+                <td colspan="3">
+                    <div>
+                        <div>
+                        <center>
+                            <table width="98%" cellpadding="0" cellspacing="0" class="header_middle"
+                                border="0">
+                                <tr>
+                                    <td align="left">
+                                        <div class="logo"></div>
+                                    </td>
+                                     <td align="left">
+                                        <div class="logo_right"></div>
+                                    </td>
+                                </tr>
+                                <tr id="ctl00_TrMenuIMIS">
+	<td align="left" class="menuContainer" colspan="2">
+                                        
+
+<div class="menuContainer">
+    <div class="content">
+        
+         <div id="ctl00_UCMenu_header" class="menuStartHome" width="51px"> 
+            <center> 
+            <a href="http://indiawater.gov.in" target="_self"><span style="visibility:hidden">H</span></a></center> 
+        </div>   
+        <div class="menu">
+            <ul id="sddm">
+                <li><a href="http://mdws.gov.in/" target="_blank"> <span id="ctl00_UCMenu_lbl">MDWS Site</span></a> </li>
+            </ul>
+        </div>
+        <div class="menuimage">
+            &nbsp;</div>
+        <div class="menu">
+            <ul id="sddmL">
+                <li><a href="/IMISReports/MenuItems/AboutSite.aspx" target="_self"><span id="ctl00_UCMenu_lbl1">About the Site</span></a> </li>
+            </ul>
+        </div>
+        <div class="menuimage">
+            &nbsp;</div>
+        <div class="menu">
+            <ul id="sddmL">
+                <li><a href="#" onmouseover="mopen('m2')" onmouseout="mclosetime()"><span id="ctl00_UCMenu_lbl2">Online Applications</span></a>
+                    <div id="m2" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+                        <a href="http://indiawater.gov.in/IMISWeb/AuthorizedLogin_Jalmani.aspx" target="_blank">
+                             <span id="ctl00_UCMenu_lbl3">Jalmani Information System</span></a> <a href="http://indiawater.gov.in/WQMSP"
+                                target="_blank"><span id="ctl00_UCMenu_lbl4">NRWQMSP Online Progress</span></a> <a href="http://indiawater.gov.in/IMISWeb/RWSBudgetMain.aspx?Ty=se"
+                                    target="_blank"><span id="ctl00_UCMenu_lbl5">Online Budget Information System</span></a>  <a href="http://sbm.gov.in"
+                                            target="_blank"><span id="ctl00_UCMenu_lbl6">Swachh Bharat Mission Online Information System</span></a> <a href="http://nirmalgrampuraskar.nic.in/"
+                                                target="_blank"><span id="ctl00_UCMenu_lbl7">Nirmal Gram Puraskar Online System</span></a> <a href="http://indiawater.gov.in/KRCIMIS/MainMaster/Default.aspx" target="_blank"> <span id="ctl00_UCMenu_lbl12">KRCs and State Training Institutes</span>
+                                                </a><a href="/IMISReports/Reports/BasicInformation/rpt_OtherResources.aspx" target="_self"><span id="ctl00_UCMenu_lbl8">Other Resources</span></a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="menuimage">
+            &nbsp;</div>
+        <div class="menu">
+            <ul id="sddm">
+                <li><a href="/IMISReports/MenuItems/ContactUs.aspx" onmouseout="mclosetime()">
+                    <span id="ctl00_UCMenu_lbl9">Contact Us</span></a></li>
+            </ul>
+        </div>
+        <div class="menuimage">
+            &nbsp;</div>
+        <div class="menu">
+            <ul id="sddm">
+                <li><a href="/IMISReports/MenuItems/HelpLine.aspx" onmouseout="mclosetime()"><span id="ctl00_UCMenu_Label1">HelpLine</span></a> </li>
+            </ul>
+        </div>
+        <div class="menuimage">
+            &nbsp;</div>
+        <div class="menu">
+            <ul id="sddm">
+                <li><a href="/IMISReports/MenuItems/ReportSiteMAP.aspx" onmouseout="mclosetime()"><span id="ctl00_UCMenu_Label2">Site Map</span> </a>
+                </li>
+            </ul>
+        </div>
+        <div class="menuimage">
+            &nbsp;</div>
+        <div class="menu">
+            <ul id="sddm">
+                <li><a href="/IMISReports/Theme/Theme.aspx" onmouseout="mclosetime()"><span id="ctl00_UCMenu_Label3">Themes</span> </a> </li>
+            </ul>
+        </div>
+    </div>
+</div>
+ 
+ 
+                                    </td>
+</tr>
+
+                                
+                            </table>
+                         </center>   
+                        </div>
+                    </div>
+                    <div class="clear">
+                    </div>
+                </td>
+            </tr>
+            
+            
+            
+            
+            
+            <tr id="ctl00_trUpperRow">
+	<td colspan="2" style="font-size:11px">
+                                <table style="border-collapse : collapse" cellpadding="0" cellspacing="0" border="0" width="100%">
+                                    <tr>
+                                        
+                                        <td width="70%">
+                                            <div id="ctl00_divSiteMap">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>You are here :</b>
+                                                <span id="ctl00_SiteMapPath1" style="font-family:Verdana;font-size:1em;"><a href="#ctl00_SiteMapPath1_SkipLink"><img alt="Skip Navigation Links" height="0" width="0" src="/IMISReports/WebResource.axd?d=bn9QjQw6YeaK8_38uRwpJnYLBxs8jkzKJVZNSU6LTyaxVHhGPtZmQat5S96sOnYTNiqQVOH5IFJKQ_IE-IxHWerbOMk1&amp;t=635084231457020723" style="border-width:0px;" /></a><span><a title="IMIS Home Page" class="RootNodeStyle" href="/IMISReports/NRDWPMain.aspx">Home</a></span><span class="PathSeparatorStyle"> &gt; </span><span><a title="Water Quality" class="NodeStyle" href="/IMISReports/NRDWPSubMain.aspx?Rep=72&amp;t=C">Water Quality</a></span><span class="PathSeparatorStyle"> &gt; </span><span class="CurrentNodeStyle">Format E2- Sample Testing of Laboratory</span><a id="ctl00_SiteMapPath1_SkipLink"></a></span>
+                                            </div>
+                                        </td>
+                                        
+                                        
+                                        <td align="right" valign="middle" style="width : 10px">
+                                            
+                                           
+                                            
+                                            
+                                            <select name="ctl00$ddLanguage" onchange="javascript:setTimeout('__doPostBack(\'ctl00$ddLanguage\',\'\')', 0)" id="ctl00_ddLanguage" class="dropDownStyleS">
+		<option selected="selected" value="">Select Language</option>
+		<option value="en-US">English</option>
+		<option value="hi-IN">हिन्दी</option>
+
+	</select>
+                                        </td>
+                                        <td id="ctl00_tdToolHeader" align="right"> 
+                                            <img src="../../Images/filter.JPG" id="ctl00_imgfilter" onclick="f()" alt="Filter" width="22" height="22" onmouseover="this.style.cursor='hand'" />
+                                            
+                                            <input type="image" name="ctl00$convertWord" id="ctl00_convertWord" src="../../Images/word_icon.jpg" style="height:22px;width:22px;border-width:0px;" />&nbsp;
+                                            <input type="image" name="ctl00$convertEXCEL" id="ctl00_convertEXCEL" src="../../Images/excel_icon.jpg" style="height:22px;width:22px;border-width:0px;" />&nbsp;
+                                            &nbsp; 
+                                            <img src="../../Images/print_icon.jpg" id="ctl00_Mprint" alt="Print" width="22" height="22" onclick="printdiv('&lt;%= System.Threading.Thread.CurrentThread.CurrentCulture %>')" onmouseover="this.style.cursor='hand'" />&nbsp;
+                                            
+                                        
+                                            
+                                            
+                                        
+                                        
+                                        </td>
+	
+                                         <td>
+                                            
+                                        
+                                        </td>
+                                        <td>
+                                            &nbsp;
+                                        </td>
+                                        <td>
+                                            
+                                        </td>
+                                        <td style="width :30px">&nbsp;</td>
+                                    </tr>
+                                </table>
+                            </td>
+</tr>
+
+                        <tr>
+                       <td colspan=2 align="left">&nbsp;&nbsp;&nbsp;&nbsp;<span id="ctl00_lblFinMsg" style="display:inline-block;color:Red;font-family:Verdana;font-size:11px;font-weight:bold;width:100%;"></span>
+                           
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    <table style="height : 100%;border-collapse : collapse" width="100%" cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                            <td style="width : 100%; height : 100%" valign="top">
+                                <table style="height : 100%;border-collapse : collapse" width="100%" cellpadding="0" cellspacing="0" border="0"> 
+                                    <tr>
+                                        <td valign="top" style="height : 400px">
+                                            <div>
+                                                <script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$ScriptManager1', document.getElementById('aspnetForm'));
+Sys.WebForms.PageRequestManager.getInstance()._updateControls(['tctl00$upPnl'], [], ['ctl00$ContentPlaceHolder$ddFinYear'], 90);
+//]]>
+</script>
+
+                                                <div id="ctl00_UpdateProgress1" style="display:none;">
+	
+                                                        <center>
+                                                            <div style="position: absolute; height: 300px; width: 400px; top: 316px; left: 333px;">
+                                                                <font size="4" color="red">
+                                                                    <img alt="Loading...." src="/IMISReports/Images/loading.gif" /></font>
+                                                            </div>
+                                                        </center>
+                                                        
+                                                    
+</div>
+                                                <div id="ctl00_upPnl">
+	
+                                                        <div class="em">
+                                                            
+    <center>
+        <table width="98%" cellpadding="0" cellspacing="0" style="border-collapse: collapse;">
+            <tr>
+                <td align="left">
+                    <table id="ctl00_ContentPlaceHolder_RadioButtonListType" class="ReportSubHeading" border="0">
+		<tr>
+			<td><input id="ctl00_ContentPlaceHolder_RadioButtonListType_0" type="radio" name="ctl00$ContentPlaceHolder$RadioButtonListType" value="01" checked="checked" /><label for="ctl00_ContentPlaceHolder_RadioButtonListType_0">By Financial Year (Laboratory tests done during the selected Year will be Shown)</label></td><td><input id="ctl00_ContentPlaceHolder_RadioButtonListType_1" type="radio" name="ctl00$ContentPlaceHolder$RadioButtonListType" value="02" onclick="javascript:setTimeout('__doPostBack(\'ctl00$ContentPlaceHolder$RadioButtonListType$1\',\'\')', 0)" /><label for="ctl00_ContentPlaceHolder_RadioButtonListType_1">By Testing Date</label></td><td><input id="ctl00_ContentPlaceHolder_RadioButtonListType_2" type="radio" name="ctl00$ContentPlaceHolder$RadioButtonListType" value="03" onclick="javascript:setTimeout('__doPostBack(\'ctl00$ContentPlaceHolder$RadioButtonListType$2\',\'\')', 0)" /><label for="ctl00_ContentPlaceHolder_RadioButtonListType_2">By Entry Date</label></td>
+		</tr>
+	</table>
+                </td>
+            </tr>
+        </table>
+        <div id="Selection" align="center">
+            <span id="calendar"></span>
+            <table width="98%" cellpadding="0" cellspacing="0" class="SelectData"
+                border-collapse: collapse;">
+                <tr>
+                    <td colspan="8">
+                        <table width="100%" cellpadding="0" cellspacing="0" style="border-collapse: collapse;">
+                            <tr>
+                                <td  style="width: 50%" align="left">
+                                    <table width="100%" cellpadding="0" cellspacing="0" style="border-collapse: collapse;">
+                                        <tr id="ctl00_ContentPlaceHolder_trFinYear">
+		<td style="width:6%;">
+                                                <span id="ctl00_ContentPlaceHolder_lblyear" class="ReportSubHeading">Financial Year</span>
+                                            </td>
+		<td align="left">
+                                                <select name="ctl00$ContentPlaceHolder$ddFinYear" onchange="javascript:setTimeout('__doPostBack(\'ctl00$ContentPlaceHolder$ddFinYear\',\'\')', 0)" id="ctl00_ContentPlaceHolder_ddFinYear" class="dropDownStyleS">
+			<option value="-1">-Select Year-</option>
+			<option value="2006-2007">2006-2007</option>
+			<option value="2007-2008">2007-2008</option>
+			<option value="2008-2009">2008-2009</option>
+			<option value="2009-2010">2009-2010</option>
+			<option value="2010-2011">2010-2011</option>
+			<option value="2011-2012">2011-2012</option>
+			<option value="2012-2013">2012-2013</option>
+			<option value="2013-2014">2013-2014</option>
+			<option value="2014-2015">2014-2015</option>
+			<option value="2015-2016">2015-2016</option>
+			<option value="2016-2017">2016-2017</option>
+			<option selected="selected" value="2017-2018">2017-2018</option>
+
+		</select>
+                                            </td>
+	</tr>
+	
+                                        
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td style="width: 6%" align="left">
+                        <span id="ctl00_ContentPlaceHolder_lblLabType" class="ReportSubHeading">Level of Laboratory</span>
+                    </td>
+                    <td style="width: 12%" align="center">
+                        <select name="ctl00$ContentPlaceHolder$ddLevel" onchange="javascript:setTimeout('__doPostBack(\'ctl00$ContentPlaceHolder$ddLevel\',\'\')', 0)" id="ctl00_ContentPlaceHolder_ddLevel" class="dropDownStyle" style="width:220px;">
+		<option value="-1">--Select Level--</option>
+		<option value="01">CENTRAL</option>
+		<option value="02">STATE</option>
+		<option selected="selected" value="03">DISTRICT</option>
+		<option value="04">SUB DISTRICT(BLOCK + SUB DIVISION)</option>
+
+	</select>
+                    </td>
+                    <td style="width: 4%" align="left">
+                        <span id="ctl00_ContentPlaceHolder_lblSt" class="ReportSubHeading">State</span>
+                    </td>
+                    <td style="width: 12%" align="center">
+                        <select name="ctl00$ContentPlaceHolder$ddState" onchange="javascript:setTimeout('__doPostBack(\'ctl00$ContentPlaceHolder$ddState\',\'\')', 0)" id="ctl00_ContentPlaceHolder_ddState" class="dropDownStyle">
+		<option value="-1">--Select State--</option>
+		<option value="001">ANDAMAN&#160;AND&#160;NICOBAR</option>
+		<option value="002">ANDHRA&#160;PRADESH</option>
+		<option value="003">ARUNACHAL&#160;PRADESH</option>
+		<option value="004">ASSAM</option>
+		<option value="005">BIHAR</option>
+		<option value="033">CHATTISGARH</option>
+		<option value="010">GOA</option>
+		<option value="011">GUJARAT</option>
+		<option value="012">HARYANA</option>
+		<option value="013">HIMACHAL&#160;PRADESH</option>
+		<option value="014">JAMMU&#160;AND&#160;KASHMIR</option>
+		<option value="034">JHARKHAND</option>
+		<option value="015">KARNATAKA</option>
+		<option value="016">KERALA</option>
+		<option value="017">MADHYA&#160;PRADESH</option>
+		<option value="018">MAHARASHTRA</option>
+		<option value="020">MANIPUR</option>
+		<option value="021">MEGHALAYA</option>
+		<option value="022">MIZORAM</option>
+		<option value="023">NAGALAND</option>
+		<option value="024">ODISHA</option>
+		<option value="025">PUDUCHERRY</option>
+		<option value="026">PUNJAB</option>
+		<option value="027">RAJASTHAN</option>
+		<option value="028">SIKKIM</option>
+		<option value="029">TAMIL&#160;NADU</option>
+		<option value="036">TELANGANA</option>
+		<option value="030">TRIPURA</option>
+		<option selected="selected" value="031">UTTAR&#160;PRADESH</option>
+		<option value="035">UTTARAKHAND</option>
+		<option value="032">WEST&#160;BENGAL</option>
+
+	</select>
+                    </td>
+                    <td align="left" style="width: 4%">
+                        <span id="ctl00_ContentPlaceHolder_lblDt" class="ReportSubHeading">District</span>
+                    </td>
+                    <td align="left" style="width: 12%">
+                        <select name="ctl00$ContentPlaceHolder$ddDistrict" onchange="javascript:setTimeout('__doPostBack(\'ctl00$ContentPlaceHolder$ddDistrict\',\'\')', 0)" id="ctl00_ContentPlaceHolder_ddDistrict" class="dropDownStyle">
+		<option selected="selected" value="-1">All District</option>
+		<option value="0471">AGRA</option>
+		<option value="0468">ALIGARH</option>
+		<option value="0501">ALLAHABAD</option>
+		<option value="0504">AMBEDKAR NAGAR</option>
+		<option value="0693">AMETHI</option>
+		<option value="0488">AURAIYA</option>
+		<option value="0517">AZAMGARH</option>
+		<option value="0464">BAGHPAT</option>
+		<option value="0506">BAHRAICH</option>
+		<option value="0519">BALLIA</option>
+		<option value="0508">BALRAMPUR</option>
+		<option value="0496">BANDA</option>
+		<option value="0502">BARABANKI</option>
+		<option value="0476">BAREILLY</option>
+		<option value="0511">BASTI</option>
+		<option value="0459">BIJNOR</option>
+		<option value="0475">BUDAUN</option>
+		<option value="0467">BULANDSHAHR</option>
+		<option value="0522">CHANDAULI</option>
+		<option value="0497">CHITRAKOOT</option>
+		<option value="0516">DEORIA</option>
+		<option value="0473">ETAH</option>
+		<option value="0487">ETAWAH</option>
+		<option value="0503">FAIZABAD</option>
+		<option value="0485">FARRUKHABAD</option>
+		<option value="0498">FATEHPUR</option>
+		<option value="0472">FIROZABAD</option>
+		<option value="0466">GAUTAM BUDDHA NAGAR</option>
+		<option value="0465">GHAZIABAD</option>
+		<option value="0521">GHAZIPUR</option>
+		<option value="0509">GONDA</option>
+		<option value="0514">GORAKHPUR</option>
+		<option value="0494">HAMIRPUR</option>
+		<option value="0717">HAPUR</option>
+		<option value="0481">HARDOI</option>
+		<option value="0491">JALAUN</option>
+		<option value="0520">JAUNPUR</option>
+		<option value="0492">JHANSI</option>
+		<option value="0462">JYOTIBA PHOOLE NAGAR</option>
+		<option value="0486">KANNAUJ</option>
+		<option value="0489">KANPUR DEHAT</option>
+		<option value="0490">KANPUR NAGAR</option>
+		<option value="0692">KASGANJ</option>
+		<option value="0500">KAUSHAMBI</option>
+		<option value="0479">KHERI</option>
+		<option value="0515">KUSHI NAGAR</option>
+		<option value="0493">LALITPUR</option>
+		<option value="0483">LUCKNOW</option>
+		<option value="0469">MAHAMAYA NAGAR</option>
+		<option value="0513">MAHARAJGANJ</option>
+		<option value="0495">MAHOBA</option>
+		<option value="0474">MAINPURI</option>
+		<option value="0470">MATHURA</option>
+		<option value="0518">MAU</option>
+		<option value="0463">MEERUT</option>
+		<option value="0525">MIRZAPUR</option>
+		<option value="0460">MORADABAD</option>
+		<option value="0458">MUZAFFARNAGAR</option>
+		<option value="0477">PILIBHIT</option>
+		<option value="0499">PRATAPGARH</option>
+		<option value="0484">RAE BARELI</option>
+		<option value="0461">RAMPUR</option>
+		<option value="0457">SAHARANPUR</option>
+		<option value="0719">SAMBHAL</option>
+		<option value="0512">SANT KABEER NAGAR</option>
+		<option value="0524">SANT RAVIDAS NAGAR</option>
+		<option value="0478">SHAHJAHANPUR</option>
+		<option value="0718">SHAMLI</option>
+		<option value="0507">SHRAVASTI</option>
+		<option value="0510">SIDDHARTH NAGAR</option>
+		<option value="0480">SITAPUR</option>
+		<option value="0526">SONBHADRA</option>
+		<option value="0505">SULTANPUR</option>
+		<option value="0482">UNNAO</option>
+		<option value="0523">VARANASI</option>
+
+	</select>
+                    </td>
+                    <td align="center" style="width: 4%">
+                        &nbsp;&nbsp;
+                        <span id="ctl00_ContentPlaceHolder_lblBk" class="ReportSubHeading">Block</span>
+                    </td>
+                    <td align="left" style="width: 20%">
+                        <select name="ctl00$ContentPlaceHolder$ddblock" onchange="javascript:setTimeout('__doPostBack(\'ctl00$ContentPlaceHolder$ddblock\',\'\')', 0)" id="ctl00_ContentPlaceHolder_ddblock" disabled="disabled" class="dropDownStyle">
+		<option selected="selected" value="-1">All Block</option>
+
+	</select>
+                    </td>
+                    
+                </tr>
+                <tr>
+                <td colspan="8">
+                <table width="100%" style="border-collapse:collapse;">
+                <tr>
+                    <td align="left" style="width: 8%">
+                            <span id="ctl00_ContentPlaceHolder_Label1" class="ReportSubHeading">Type of Laboratory</span>
+                        </td>
+                        <td align="left" style="width: 12%">
+                            <select name="ctl00$ContentPlaceHolder$ddLaboratoryType" onchange="javascript:setTimeout('__doPostBack(\'ctl00$ContentPlaceHolder$ddLaboratoryType\',\'\')', 0)" id="ctl00_ContentPlaceHolder_ddLaboratoryType" class="dropDownStyle" style="width:200px;">
+		<option selected="selected" value="%">--All Laboratory Type--</option>
+		<option value="St">Stationary</option>
+		<option value="Mobile">Mobile</option>
+
+	</select>
+                        </td>
+                        <td align="center" style="width: 8%">
+                            <span id="ctl00_ContentPlaceHolder_lblLabName" class="ReportSubHeading">Laboratory Name</span>
+                        </td>
+                        <td align="left" style="width: 12%">
+                            <select name="ctl00$ContentPlaceHolder$ddLabName" id="ctl00_ContentPlaceHolder_ddLabName" class="dropDownStyle" style="width:200px;">
+		<option value="%">--All Laboratory--</option>
+		<option value="001352">  Regional  water Testing Laboratory Gorakhpur (GORAKHPUR ) - STATIONARY</option>
+		<option value="002139">District Laboratory Lucknow (LUCKNOW ) - STATIONARY</option>
+		<option value="000743">District Water Testing Laboratory (MORADABAD ) - STATIONARY</option>
+		<option value="001349">District Water Testing Laboratory Basti (BASTI ) - STATIONARY</option>
+		<option value="000748">EE Const Divi JP Nagar (JYOTIBA PHOOLE NAGAR ) - STATIONARY</option>
+		<option value="001394">Fatehpur Water Testing Lab (FATEHPUR ) - STATIONARY</option>
+		<option value="003773">Jal Nigam Azamgarh (AZAMGARH ) - STATIONARY</option>
+		<option value="001361">Regional Water Analysis Laboratory Agra (AGRA ) - STATIONARY</option>
+		<option value="000766">Regional Water Analysis Laboratory Varanasi (VARANASI ) - STATIONARY</option>
+		<option value="000749">TCD UPJN Rampur (RAMPUR ) - STATIONARY</option>
+		<option value="003774">UP JAL NIGAM (SHAMLI ) - STATIONARY</option>
+		<option value="000744">UP Jal Nigam District Water Testing Laboratory (SITAPUR ) - STATIONARY</option>
+		<option value="000752">UPJal Nigam Water Testing Lab Bulandshahar (BULANDSHAHR ) - STATIONARY</option>
+		<option value="000742">WATER TASTING LAB IN GARI (BIJNOR ) - STATIONARY</option>
+		<option value="003344">Water Testing Lab Chandausi (SAMBHAL ) - STATIONARY</option>
+		<option value="003727">Water Testing Lab HAPUR (HAPUR ) - STATIONARY</option>
+		<option value="001358">Water Testing Laboratory Aligarh (ALIGARH ) - STATIONARY</option>
+		<option value="001333">Water Testing Laboratory Allahabad (ALLAHABAD ) - STATIONARY</option>
+		<option value="001342">Water Testing Laboratory Ambedkar Nagar (AMBEDKAR NAGAR ) - STATIONARY</option>
+		<option value="001549">Water Testing Laboratory Auraiya (AURAIYA ) - STATIONARY</option>
+		<option value="001356">Water Testing Laboratory Azamgarh (AZAMGARH ) - STATIONARY</option>
+		<option value="000751">Water Testing Laboratory Baghpat (BAGHPAT ) - STATIONARY</option>
+		<option value="001344">Water Testing Laboratory Bahraich (BAHRAICH ) - STATIONARY</option>
+		<option value="001355">Water Testing Laboratory Ballia (BALLIA ) - STATIONARY</option>
+		<option value="001345">Water Testing Laboratory Balrampur (BALRAMPUR ) - STATIONARY</option>
+		<option value="001550">Water Testing Laboratory Banda (BANDA ) - STATIONARY</option>
+		<option value="001340">Water Testing Laboratory Barabanki (BARABANKI ) - STATIONARY</option>
+		<option value="001543">Water Testing Laboratory Bareilly (BAREILLY ) - STATIONARY</option>
+		<option value="001542">water Testing Laboratory Budaun (BUDAUN ) - STATIONARY</option>
+		<option value="001534">water testing laboratory cd up jn pilibhit (PILIBHIT ) - STATIONARY</option>
+		<option value="000819">Water Testing Laboratory Chandauli (CHANDAULI ) - STATIONARY</option>
+		<option value="002938">Water Testing Laboratory Chatrapati Shahu Ji Nagar (AMETHI ) - STATIONARY</option>
+		<option value="001551">Water Testing Laboratory Chitrakoot (CHITRAKOOT ) - STATIONARY</option>
+		<option value="001353">Water Testing Laboratory Deoria (DEORIA ) - STATIONARY</option>
+		<option value="001539">Water Testing Laboratory Etah (ETAH ) - STATIONARY</option>
+		<option value="001552">Water Testing Laboratory Etawah (ETAWAH ) - STATIONARY</option>
+		<option value="001341">Water Testing Laboratory Faizabad (FAIZABAD ) - STATIONARY</option>
+		<option value="001553">Water Testing Laboratory Farrukhabad (FARRUKHABAD ) - STATIONARY</option>
+		<option value="001362">Water Testing Laboratory Firozabad (FIROZABAD ) - STATIONARY</option>
+		<option value="000767">Water Testing Laboratory Gautam Buddha Nagar (GAUTAM BUDDHA NAGAR ) - STATIONARY</option>
+		<option value="000747">Water Testing Laboratory Ghaziabad (GHAZIABAD ) - STATIONARY</option>
+		<option value="001336">Water Testing Laboratory Ghazipur (GHAZIPUR ) - STATIONARY</option>
+		<option value="001347">Water Testing Laboratory Gonda (GONDA ) - STATIONARY</option>
+		<option value="001554">Water Testing Laboratory Hamirpur (HAMIRPUR ) - STATIONARY</option>
+		<option value="001544">Water Testing Laboratory Hardoi (HARDOI ) - STATIONARY</option>
+		<option value="001555">Water Testing Laboratory Jalaun (JALAUN ) - STATIONARY</option>
+		<option value="001337">Water Testing Laboratory Jaunpur (JAUNPUR ) - STATIONARY</option>
+		<option value="001567">Water Testing Laboratory Jhansi (JHANSI ) - STATIONARY</option>
+		<option value="001568">Water Testing Laboratory Kannauj (KANNAUJ ) - STATIONARY</option>
+		<option value="001569">Water Testing Laboratory Kanpur Dehat (KANPUR DEHAT ) - STATIONARY</option>
+		<option value="001570">Water Testing Laboratory Kanpur Nagar (KANPUR NAGAR ) - STATIONARY</option>
+		<option value="002937">Water Testing Laboratory Kanshiram Nagar (KASGANJ ) - STATIONARY</option>
+		<option value="001334">Water Testing Laboratory Kaushambi (KAUSHAMBI ) - STATIONARY</option>
+		<option value="001545">Water Testing Laboratory Kheri (KHERI ) - STATIONARY</option>
+		<option value="001354">Water Testing Laboratory Kushi Nagar (KUSHI NAGAR ) - STATIONARY</option>
+		<option value="000618">Water Testing Laboratory Lalitpur (LALITPUR ) - STATIONARY</option>
+		<option value="001359">Water Testing Laboratory Mahamaya Nagar (MAHAMAYA NAGAR ) - STATIONARY</option>
+		<option value="001351">Water Testing Laboratory Maharajganj (MAHARAJGANJ ) - STATIONARY</option>
+		<option value="001571">Water Testing Laboratory Mahoba (MAHOBA ) - STATIONARY</option>
+		<option value="001363">Water Testing Laboratory Mainpuri (MAINPURI ) - STATIONARY</option>
+		<option value="001360">Water Testing Laboratory Mathura (MATHURA ) - STATIONARY</option>
+		<option value="001357">Water Testing Laboratory Mau (MAU ) - STATIONARY</option>
+		<option value="000746">Water Testing Laboratory Meerut (MEERUT ) - STATIONARY</option>
+		<option value="001339">Water Testing Laboratory Mirzapur (MIRZAPUR ) - STATIONARY</option>
+		<option value="000522">Water Testing Laboratory Muzaffarnagar (MUZAFFARNAGAR ) - STATIONARY</option>
+		<option value="001335">Water Testing Laboratory Pratapgarh (PRATAPGARH ) - STATIONARY</option>
+		<option value="001546">Water Testing Laboratory Rai Bareli  (RAE BARELI ) - STATIONARY</option>
+		<option value="000655">Water Testing Laboratory Saharanpur (SAHARANPUR ) - STATIONARY</option>
+		<option value="001350">Water Testing Laboratory Sant Kabeer Nagar (SANT KABEER NAGAR ) - STATIONARY</option>
+		<option value="001338">Water Testing Laboratory Sant Ravidas Nagar (SANT RAVIDAS NAGAR ) - STATIONARY</option>
+		<option value="001547">Water Testing Laboratory Shahjahanpur (SHAHJAHANPUR ) - STATIONARY</option>
+		<option value="001346">Water Testing Laboratory Shravasti (SHRAVASTI ) - STATIONARY</option>
+		<option value="001348">Water Testing Laboratory Siddharth Nagar (SIDDHARTH NAGAR ) - STATIONARY</option>
+		<option value="001541">Water Testing Laboratory Sonbhadra (SONBHADRA ) - STATIONARY</option>
+		<option value="001343">Water Testing Laboratory Sultanpur (SULTANPUR ) - STATIONARY</option>
+		<option value="001548">Water Testing Laboratory Unnao (UNNAO ) - STATIONARY</option>
+
+	</select>
+                        </td>
+                        <td align="right">
+                            <input type="submit" name="ctl00$ContentPlaceHolder$btnGO" value="Show" id="ctl00_ContentPlaceHolder_btnGO" class="btn" style="height:60%;height:18px;" />
+                        </td>
+                </tr>
+                
+                </table>
+                </td>
+                    
+                </tr>
+            </table>
+        </div>
+    </center>
+    
+    <div id="printpage" align="center">
+        
+    </div>
+
+                                                        </div>
+                                                                    
+                                                    
+</div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                            
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                
+            </tr>
+             
+
+            <tr>
+                <td colspan="3" style="font-size:11px">
+                    <!-- footer Container Starts  Here -->
+                    <div class="clear">
+                    </div>
+                    <div class="footerBg">
+                        <div class="footer">
+                        </div>
+                    </div>
+                    <div class="clear">
+                    </div>
+                    <div>
+                        
+<div>
+    <center>
+    <div>
+        <table width="98%">
+            <tr>
+                <td width="50%" align="left" style="font-size:10px">
+                   
+                </td>
+                <td width="50%" align="right" style="font-size:10px">
+                    <a href="http://www.mdws.gov.in/website-policies-0" target="_blank"><span id="ctl00_UCFooter_lbl1">Disclaimer and Privacy Policy</span></a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    </center>
+    <center>
+        <div  style="font-size:10px">
+            <br />
+            <span id="ctl00_UCFooter_lbl2">Best viewed on IE 7 and above with resolution 1024 X 768</span>
+            <br />
+            <span id="ctl00_UCFooter_lbl3">Website hosted &amp; maintained by National Informatics Centre.</span>
+            <br />
+            <span id="ctl00_UCFooter_lbl4">Data presented in this site has been updated by respective State Governments & Ministry of Drinking Water and Sanitation, Government of India. </span>
+            <br />
+            <span id="ctl00_UCFooter_lbl5">Copyright ©</span><a href="http://ddws.gov.in" target="_blank">
+            <span id="ctl00_UCFooter_lbl6">Ministry of Drinking Water & Sanitation</span> </a>
+        </div>
+    </center>
+</div>
+
+                    </div>
+                    <div class="clear">
+                    </div>
+                </td>
+            </tr>
+            
+            
+        </table>
+        
+        
+        <div id="divFilter" style="display :none">    
+              
+        </div>
+        <map name="Map" id="Map">
+        <area shape="rect" coords="30, 0, 350, 30" href="http://ddws.nic.in/" target="_blank"  alt="MDWS" />
+    </map>
+    
+    <script language="javascript">
+    var modalWindow = {
+        parent: "body",
+        windowId: null,
+        content: null,
+        width: null,
+        height: null,
+        close: function () {
+            $(".modal-window").remove();
+            $(".modal-overlay").remove();
+        },
+        open: function () {
+            var modal = "";
+            modal += "<div class=\"modal-overlay\"></div>";
+            modal += "<div id=\"" + this.windowId + "\" class=\"modal-window\" style=\"width:" + this.width + "px; height:" + this.height + "px; margin-top:-" + (this.height / 2) + "px; margin-left:-" + (this.width / 2) + "px;\">";
+            modal += this.content;
+            modal += "</div>";
+
+            $(this.parent).append(modal);
+
+            $(".modal-window").append("<a class=\"close-window\"></a>");
+            $(".close-window").click(function () { modalWindow.close(); });
+           // $(".modal-overlay").click(function () { modalWindow.close(); });
+        }
+    };
+
+
+    var openMyModal = function (source) {
+        modalWindow.windowId = "myModal";
+        modalWindow.width = 900;
+        modalWindow.height = 500;
+        modalWindow.content = "<iframe  height='500' width='900' frameborder='0' scrolling='yes' allowtransparency='true' src='" + source + "'></iframe>";
+        modalWindow.open();
+    };
+
+    var openMyModalPhy = function(source) {
+        modalWindow.windowId = "myModal";
+        modalWindow.width = 1100;
+        modalWindow.height = 600;
+        modalWindow.content = "<iframe  height='500' width='900' frameborder='0' scrolling='yes' allowtransparency='true' src='" + source + "'></iframe>";
+        modalWindow.open();
+    };
+    </script>
+    
+<script type='text/javascript' language='javascript'>javascript:altRows('tableReportTable','en-US')</script>
+<script type="text/javascript">
+//<![CDATA[
+Sys.Application.initialize();
+Sys.Application.add_init(function() {
+    $create(Sys.UI._UpdateProgress, {"associatedUpdatePanelId":null,"displayAfter":500,"dynamicLayout":true}, null, null, $get("ctl00_UpdateProgress1"));
+});
+//]]>
+</script>
+</form>
+</body>
+</html>
+
